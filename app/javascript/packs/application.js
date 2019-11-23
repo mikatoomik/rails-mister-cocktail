@@ -15,4 +15,28 @@
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 import 'bootstrap';
-console.log('Hello World from Webpacker')
+import { initFormToggler } from '../components/form'
+import { initSweetalert } from '../plugins/init_sweetalert'
+
+initFormToggler('#form_toggle', '#card_ingredient')
+initSweetalert('#sweet-alert-delete',
+{
+  title: "Are you sure?",
+  text: "Once deleted, you will not be able to recover this cocktail!",
+  icon: "warning",
+  buttons: true,
+  dangerMode: true,
+}, ((willDelete) => {
+  if (willDelete) {
+    const link = document.querySelector('#delete-link');
+    link.click();
+  } else {
+    swal("Your cocktail is safe!");
+  }
+})
+  )
+
+
+
+
+

@@ -1,0 +1,39 @@
+<div class="carousel-container">
+  <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="https://source.unsplash.com/featured/?cocktail,<%= @cocktail.name %>" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5><%= @cocktail.name %></h5>
+          <p><ul>
+              <% @cocktail.doses.each do |dose| %>
+                <li>
+                  <%= dose.ingredient.name %> : <%= dose.description %>
+                </li>
+              <% end %>
+            </ul></p>
+
+        <button id="form_toggle" class="btn btn-warning">+ Add Ingredient</button>
+        <p>
+          <button id="sweet-alert-delete" class="btn btn-danger">Delete <%= @cocktail.name %></button>
+          <%= link_to "", cocktail_path(@cocktail), method: :delete, id: "delete-link", class: "hidden" %>
+        </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="card" id="card_ingredient" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Add Ingredient</h5>
+    <h6 class="card-subtitle mb-2 text-muted">dosage in description</h6>
+    <p class="card-text">
+      <%= simple_form_for [@cocktail, @dose] do |f| %>
+        <%= f.input :description %>
+        <%= f.association :ingredient %>
+        <%= f.submit "Add dose", class: "btn btn-success" %>
+      <% end %>
+    </p>
+  </div>
+</div>
+
