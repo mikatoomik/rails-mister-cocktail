@@ -21,7 +21,13 @@
     <% end %>
   </div>
 </div>
-          <p>
+
+<div class="row">
+<div class="card-trip">
+  <div class="card-trip-infos">
+    <div>
+      <h2>Add Cocktail</h2>
+      <p>
             <%= simple_form_for(@cocktail_new) do |f| %>
               <%= f.input :name %>
               <%= f.input :photo %>
@@ -29,3 +35,7 @@
               <%= f.submit "Add a new Cocktail", class: "btn btn-primary" %>
               <% end %>
           </p>
+    </div>
+  </div>
+</div>
+</div>
