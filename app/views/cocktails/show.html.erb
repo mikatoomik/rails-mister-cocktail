@@ -27,8 +27,8 @@
   </div>
 </div>
   <div class="container">
-    <h1><%= @cocktail.name %></strong>!</h1>
-      <p>
+    <h1><%= @cocktail.name %></h1>
+    <p>
     <ul>
       <% @cocktail.doses.each do |dose| %>
       <li>
@@ -36,7 +36,7 @@
       </li>
       <% end %>
     </ul>
-  </p>
-    <button id="form_toggle" class="btn btn-flat">+ Add Ingredient</button>
+    <button id="form_toggle" class="btn btn-primary">+ Add Ingredient</button>
+    </p>
   </div>
 </div>
