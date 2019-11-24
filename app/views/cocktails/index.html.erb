@@ -2,9 +2,9 @@
   My Cocktails
 </div>
 <div class="container">
-  <div class="row">
+  <div class="row p-2 m-2">
     <% @cocktails.each do |cocktail| %>
-    <div class="col-4 p-2">
+    <div class="col-12 col-lg-4 p-2">
       <div class="card-product">
         <%= cl_image_tag cocktail.photo, crop: :fill %>
         <div class="card-product-infos">
@@ -22,8 +22,8 @@
   </div>
 </div>
 
-<div class="row">
-<div class="card-trip">
+<div class="row p-2 m-2">
+<div class="card-trip col-12 col-lg-4">
   <div class="card-trip-infos">
     <div>
       <h2>Add Cocktail</h2>
