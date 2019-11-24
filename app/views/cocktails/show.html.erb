@@ -1,45 +1,42 @@
-<div class="carousel-container">
-  <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="https://source.unsplash.com/featured/?cocktail,<%= @cocktail.name %>" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5><%= @cocktail.name %></h5>
-          <p>
-            <ul>
-              <% @cocktail.doses.each do |dose| %>
-              <li>
-                <%= dose.ingredient.name %> : <%= dose.description %>
-              </li>
-              <% end %>
-            </ul>
-          </p>
-          <button id="form_toggle" class="btn btn-warning">+ Add Ingredient</button>
-          <div id="buttonsandform" class="d-flex justify-content-between">
-              <div>
-                <%= link_to cocktails_path do %>
-                <button  id="back" class="btn btn-success">Back...</button>
-                <% end %>
-              </div>
-              <div class="card" id="card_ingredient" style="width: 18rem;">
-                <div class="card-body">
-                  <h5 class="card-title">Add Ingredient</h5>
-                  <p class="card-text">
-                    <%= simple_form_for [@cocktail, @dose] do |f| %>
-                    <%= f.input :description, label: "dosage" %>
-                    <%= f.association :ingredient %>
-                    <%= f.submit "Add dose", class: "btn btn-success" %>
-                    <% end %>
-                  </p>
-                </div>
-              </div>
-                <div>
-                  <button id="sweet-alert-delete" class="btn btn-danger">Delete <%= @cocktail.name %></button>
-                  <%= link_to "", cocktail_path(@cocktail), method: :delete, id: "delete-link", class: "hidden" %>
-                </div>
-          </div>
 
-        </div>
-      </div>
+
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @cocktail.photo, crop: :fill; %>')">
+  <div id="buttonsandform" class="d-flex justify-content-between">
+    <div>
+      <%= link_to cocktails_path do %>
+      <button  id="back" class="btn btn-success">Back...</button>
+      <% end %>
+    </div>
+<div id="card_ingredient" class="card-trip">
+  <div class="card-trip-infos">
+    <div>
+      <h2>Add Ingredient</h2>
+      <p>
+      <%= simple_form_for [@cocktail, @dose] do |f| %>
+      <%= f.input :description, label: "dosage" %>
+      <%= f.association :ingredient %>
+      <%= f.submit "Add dose", class: "btn btn-success" %>
+      <% end %>
+      </p>
     </div>
   </div>
+</div>
+  <div>
+    <button id="sweet-alert-delete" class="btn btn-danger">Delete <%= @cocktail.name %></button>
+    <%= link_to "", cocktail_path(@cocktail), method: :delete, id: "delete-link", class: "hidden" %>
+  </div>
+</div>
+  <div class="container">
+    <h1><%= @cocktail.name %></strong>!</h1>
+      <p>
+    <ul>
+      <% @cocktail.doses.each do |dose| %>
+      <li>
+        <%= dose.ingredient.name %> : <%= dose.description %>
+      </li>
+      <% end %>
+    </ul>
+  </p>
+    <button id="form_toggle" class="btn btn-flat">+ Add Ingredient</button>
+  </div>
+</div>

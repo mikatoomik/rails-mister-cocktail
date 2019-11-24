@@ -6,7 +6,7 @@
     <% @cocktails.each do |cocktail| %>
     <div class="col-4 p-2">
       <div class="card-product">
-        <img src="https://source.unsplash.com/featured/?cocktail,<%= cocktail.name %>" />
+        <%= cl_image_tag cocktail.photo, crop: :fill %>
         <div class="card-product-infos">
           <h2><%= cocktail.name %></h2>
           <p><%= link_to "make me...", cocktail_path(cocktail) %></p>
@@ -19,18 +19,13 @@
       </div>
     </div>
     <% end %>
-    <div class="col-4 p-2">
-      <div class="card-product">
-        <img src="https://source.unsplash.com/featured/?cocktail" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3))" />
-        <div class="card-product-infos">
+  </div>
+</div>
           <p>
             <%= simple_form_for(@cocktail_new) do |f| %>
               <%= f.input :name %>
+              <%= f.input :photo %>
+              <%= f.input :photo_cache, as: :hidden %>
               <%= f.submit "Add a new Cocktail", class: "btn btn-primary" %>
               <% end %>
           </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
