@@ -9,12 +9,10 @@
         <img src="https://source.unsplash.com/featured/?cocktail,<%= cocktail.name %>" />
         <div class="card-product-infos">
           <h2><%= cocktail.name %></h2>
-          <p><%= link_to "edit me...", cocktail_path(cocktail) %></p>
           <p><%= link_to "make me...", cocktail_path(cocktail) %></p>
-          <!-- { confirm: "Are you sure?", disable_with: "Processing..." } -->
           <p>
           <%= link_to cocktail_path(cocktail),method: 'DELETE', class: "delete-link hidden" do %>
-          <button class="btn btn-danger sweet-alert-delete">Delete <%= cocktail.name %></button>
+          <button class="btn btn-tag">X</button>
           <% end %>
           </p>
         </div>
